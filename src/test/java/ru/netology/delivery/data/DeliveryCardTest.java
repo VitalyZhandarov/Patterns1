@@ -21,8 +21,8 @@ public class DeliveryCardTest {
         open("http://localhost:9999");
     }
 
-    String date1 = generateDate(4, "dd.MM.yyyy");
-    String date2 = generateDate(10, "dd.MM.yyyy");
+    String date1 = generateDate(7, "dd.MM.yyyy");
+    String date2 = generateDate(12, "dd.MM.yyyy");
 
     @Test
     @DisplayName("Should successful plan and replan meeting")
