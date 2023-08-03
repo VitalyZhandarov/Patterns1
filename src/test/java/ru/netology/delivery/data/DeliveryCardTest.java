@@ -21,8 +21,8 @@ public class DeliveryCardTest {
         open("http://localhost:9999");
     }
 
-    String Date1 = generateDate(4, "dd.MM.yyyy");
-    String Date2 = generateDate(10, "dd.MM.yyyy");
+    String date1 = generateDate(4, "dd.MM.yyyy");
+    String date2 = generateDate(10, "dd.MM.yyyy");
 
     @Test
     @DisplayName("Should successful plan and replan meeting")
@@ -30,18 +30,18 @@ public class DeliveryCardTest {
 
         $("[data-test-id=city] [placeholder='Город']").val(DataGenerator.generateCity("ru"));
         $("[data-test-id=date] [class='input__box'] [placeholder='Дата встречи']").doubleClick().sendKeys(Keys.BACK_SPACE);
-        $("[data-test-id=date] [class='input__box'] [placeholder='Дата встречи']").val(Date1);
+        $("[data-test-id=date] [class='input__box'] [placeholder='Дата встречи']").val(date1);
         $("[data-test-id=name] [name='name']").val(DataGenerator.generateName("ru"));
         $("[data-test-id=phone] [type='tel']").val(DataGenerator.generatePhone("ru"));
         $("[data-test-id=agreement]").click();
         $("[role=button] .button__text").click();
-        $("[data-test-id=success-notification] .notification__content").shouldHave(Condition.exactText("Встреча успешно запланирована на " + Date1));
+        $("[data-test-id=success-notification] .notification__content").shouldHave(Condition.exactText("Встреча успешно запланирована на " + date1));
         $("[data-test-id=date] [class='input__box'] [placeholder='Дата встречи']").doubleClick().sendKeys(Keys.BACK_SPACE);
-        $("[data-test-id=date] [class='input__box'] [placeholder='Дата встречи']").val(Date2);
+        $("[data-test-id=date] [class='input__box'] [placeholder='Дата встречи']").val(date2);
         $("[role=button] .button__text").click();
         $("[data-test-id=replan-notification] .notification__content").shouldHave(Condition.exactText("У вас уже запланирована встреча на другую дату. Перепланировать?"));
         $(byText("Перепланировать")).click();
-        $("[data-test-id=success-notification] .notification__content").shouldHave(Condition.exactText("Встреча успешно запланирована на " + Date2));
+        $("[data-test-id=success-notification] .notification__content").shouldHave(Condition.exactText("Встреча успешно запланирована на " + date2));
 
 
     }
